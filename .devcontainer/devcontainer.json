@@ -1,0 +1,23 @@
+{
+    "name": "Existing Docker Compose (Extend)",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "php",
+    "workspaceFolder": "/var/www/html",
+    "settings": {
+        "php.format.codeStyle": "PSR-2"
+    },
+    "extensions": [
+        "DEVSENSE.phptools-vscode",
+        "bmewburn.vscode-intelephense-client",
+        "junstyle.php-cs-fixer",
+        "calebporzio.better-phpunit",
+        "ryannaddy.laravel-artisan"
+    ],
+    "remoteUser": "laravel"
+    //"postCreateCommand": "chown -R 1000:1000 /var/www/html"
+    // "forwardPorts": [],
+    // "runServices": [],
+    // "shutdownAction": "none",
+}
