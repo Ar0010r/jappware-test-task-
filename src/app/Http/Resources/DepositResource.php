@@ -25,16 +25,4 @@ class DepositResource extends JsonResource
             'phone' => $this->player->phone
         ];
     }
-
-    /**
-     * Create a new resource collection instance.
-     *
-     * @param LengthAwarePaginator $resource The resource to be transformed into a collection.
-     * @return \Illuminate\Http\Resources\Json\ResourceCollection
-     */
-    public static function collection($resource)
-    {
-        $resource->loadMissing('player');
-        return parent::collection($resource);
-    }
 }
