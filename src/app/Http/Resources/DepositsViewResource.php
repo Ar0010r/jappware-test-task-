@@ -15,11 +15,10 @@ class DepositsViewResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $this->resource->appends($request->validated());
         return [
+            'filters' => $request->validated(),
             'data' => $this->resource->toArray($request),
-            'pagination' => $this->resource->appends($request->validated()),
-            'filters' => $request->validated()
+            'pagination' => $this->resource->appends($request->validated())
         ];
     }
 }
