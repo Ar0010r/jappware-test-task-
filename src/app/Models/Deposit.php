@@ -71,6 +71,6 @@ class Deposit extends Model implements IsFilterable
         if ($this->amount == null || $this->amount == 0) {
             return "0.00";
         }
-        return number_format($this->amount / 100, 6);
+        return number_format($this->amount / 100, 2);
     }
 }
