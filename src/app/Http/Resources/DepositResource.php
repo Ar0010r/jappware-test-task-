@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class DepositResource extends JsonResource
 {
@@ -23,5 +24,17 @@ class DepositResource extends JsonResource
             'email' => $this->player->email,
             'phone' => $this->player->phone
         ];
+    }
+
+    /**
+     * Create a new resource collection instance.
+     *
+     * @param LengthAwarePaginator $resource The resource to be transformed into a collection.
+     * @return \Illuminate\Http\Resources\Json\ResourceCollection
+     */
+    public static function collection($resource)
+    {
+        $resource->loadMissing('player');
+        return parent::collection($resource);
     }
 }
