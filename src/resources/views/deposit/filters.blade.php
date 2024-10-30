@@ -1,4 +1,4 @@
-<form id="search_form" action="/deposits" onsubmit="removeEmptyFields()">
+<form id="search_form" action="/" onsubmit="removeEmptyFields()">
     @method('GET')
     <div class="flex space-x-2 mb-4 w-full">
         <input id="date_from-filter" type="text" placeholder="Date from" name="date_from"
@@ -83,8 +83,25 @@
         function resetFilters() {
             const form = document.getElementById('search_form');
 
+            let one_week_ago = new Date();
+            console.log(one_week_ago);
+            one_week_ago.setDate(one_week_ago.getDate() - 6);
+            one_week_ago.setHours(0, 0, 0, 0);
+            one_week_ago = one_week_ago.toISOString().slice(0, 10) + ' 00:00';
+
+            let tomorrow_midnight = new Date();
+            tomorrow_midnight.setDate(tomorrow_midnight.getDate() + 2);
+            tomorrow_midnight.setHours(0, 0, 0, 0);
+            tomorrow_midnight = tomorrow_midnight.toISOString().slice(0, 10) + ' 00:00';
+
             form.querySelectorAll('input').forEach(input => {
-            input.value = '';
+                if (input.id === 'date_from-filter') {
+                    input.value = one_week_ago;
+                } else if (input.id === 'date_to-filter') {
+                    input.value = tomorrow_midnight;
+                } else {
+                    input.value = '';
+                }
             });
 
             form.querySelectorAll('select').forEach(select => {

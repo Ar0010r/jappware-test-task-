@@ -22,8 +22,8 @@ class GetDepositRequest extends ListRequest
             'player_name' => 'nullable|string',
             'date_from' => 'nullable|date',
             'date_to' => 'nullable|date',
-            'amount_from' => 'nullable|int',
-            'amount_to' => 'nullable|int',
+            'amount_from' => 'nullable|numeric',
+            'amount_to' => 'nullable|numeric',
         ];
 
         return array_merge(parent::rules(), $rules);
